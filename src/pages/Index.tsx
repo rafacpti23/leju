@@ -8,6 +8,7 @@ import {
   Heart,
   Instagram,
   MapPin,
+  MessageCircle,
   ShieldCheck,
   Sparkles,
   Users,
@@ -26,6 +27,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 
 const instagramUrl = "https://www.instagram.com/lejuassessoria/";
+const whatsappUrl = "https://wa.me/5527999375330";
 
 const services = [
   {
@@ -106,18 +108,41 @@ const journey = [
 ];
 
 function PortraitCard() {
+  const portraitOptions = ["/juliana-ferraz.png", "/juliana-ferraz.jpg"];
+  const [portraitIndex, setPortraitIndex] = useState(0);
   const [imageError, setImageError] = useState(false);
 
   if (!imageError) {
     return (
-      <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/80 p-3 shadow-[0_24px_80px_rgba(122,36,73,0.18)] backdrop-blur">
+      <div className="relative overflow-hidden rounded-[2.2rem] border border-white/60 bg-white/80 p-3 shadow-[0_30px_100px_rgba(122,36,73,0.20)] backdrop-blur">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#ffffff_0%,transparent_58%)]" />
+        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute -bottom-12 -left-8 h-44 w-44 rounded-full bg-[#f4cedb] blur-3xl" />
         <img
-          src="/juliana-ferraz.jpg"
-          alt="Juliana Ferraz, da Legio Assessoria"
-          className="relative h-full min-h-[460px] w-full rounded-[1.6rem] object-cover"
-          onError={() => setImageError(true)}
+          src={portraitOptions[portraitIndex]}
+          alt="Juliana Ferraz, da Leju Assessoria"
+          className="relative h-full min-h-[500px] w-full rounded-[1.8rem] object-cover object-center"
+          onError={() => {
+            if (portraitIndex < portraitOptions.length - 1) {
+              setPortraitIndex((current) => current + 1);
+              return;
+            }
+
+            setImageError(true);
+          }}
         />
+        <div className="absolute bottom-8 left-8 right-8 rounded-[1.4rem] border border-white/60 bg-white/72 p-4 shadow-lg backdrop-blur-xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+            Leju Assessoria
+          </p>
+          <p className="mt-2 font-display text-2xl leading-none text-[#7a2449]">
+            Juliana Ferraz
+          </p>
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Atendimento afetivo, organizacao cuidadosa e presenca elegante para
+            casamentos e eventos especiais.
+          </p>
+        </div>
       </div>
     );
   }
@@ -183,7 +208,7 @@ const Index = () => {
             />
             <div>
               <p className="font-display text-2xl leading-none text-[#7a2449]">
-                Legio Assessoria
+                Leju Assessoria
               </p>
               <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
                 Eventos e casamentos
@@ -234,7 +259,7 @@ const Index = () => {
                 Assessoria elegante para eventos que merecem ser inesqueciveis.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-                A Legio Assessoria cuida do planejamento, da coordenacao e da
+                A Leju Assessoria cuida do planejamento, da coordenacao e da
                 ambientacao de casamentos e eventos especiais com atendimento
                 proximo, transparencia e sensibilidade em cada detalhe.
               </p>
@@ -244,6 +269,12 @@ const Index = () => {
                   <a href="#servicos">
                     Conheca os servicos
                     <ArrowRight className="h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" className="rounded-full bg-[#25d366] px-8 text-white shadow-xl shadow-[#25d366]/25 hover:bg-[#22c55e]">
+                  <a href={whatsappUrl} target="_blank" rel="noreferrer">
+                    <MessageCircle className="h-4 w-4" />
+                    Falar no WhatsApp
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="rounded-full border-primary/20 bg-white/70 px-8 text-slate-700 hover:bg-white">
@@ -296,7 +327,7 @@ const Index = () => {
                 Um suporte completo para celebrar com tranquilidade e beleza.
               </h2>
               <p className="mt-4 text-base leading-8 text-slate-600">
-                A proposta da Legio Assessoria une organizacao, sensibilidade e
+                A proposta da Leju Assessoria une organizacao, sensibilidade e
                 cuidado estetico para que cada evento aconteca de forma fluida,
                 acolhedora e memoravel.
               </p>
@@ -414,7 +445,7 @@ const Index = () => {
               </div>
               <p className="max-w-xl text-sm leading-7 text-slate-600">
                 Em vez de mostrar telas do sistema, a pagina inicial valoriza os
-                servicos prestados pela Legio Assessoria e a experiencia vivida em
+                servicos prestados pela Leju Assessoria e a experiencia vivida em
                 cada celebracao.
               </p>
             </div>
@@ -465,13 +496,19 @@ const Index = () => {
                     Uma entrada acolhedora para a marca e um acesso direto ao sistema.
                   </h2>
                   <p className="mt-5 max-w-2xl text-base leading-8 text-white/80">
-                    A nova pagina inicial apresenta a Legio Assessoria como marca
+                    A nova pagina inicial apresenta a Leju Assessoria como marca
                     de eventos e casamentos. Quando quiser entrar na area interna,
                     o botao Sistema leva para o login atual.
                   </p>
                 </div>
 
                 <div className="flex flex-col gap-4 rounded-[1.8rem] border border-white/10 bg-white/10 p-6 backdrop-blur">
+                  <Button asChild size="lg" className="rounded-full bg-[#25d366] px-8 text-white hover:bg-[#22c55e]">
+                    <a href={whatsappUrl} target="_blank" rel="noreferrer">
+                      <MessageCircle className="h-4 w-4" />
+                      WhatsApp (27) 99937-5330
+                    </a>
+                  </Button>
                   <Button asChild size="lg" className="rounded-full bg-white px-8 text-[#621c3d] hover:bg-white/90">
                     <a href={instagramUrl} target="_blank" rel="noreferrer">
                       <Instagram className="h-4 w-4" />
@@ -480,13 +517,15 @@ const Index = () => {
                   </Button>
                   <Button asChild size="lg" variant="outline" className="rounded-full border-white/30 bg-transparent px-8 text-white hover:bg-white/10">
                     <Link to={systemHref}>
-                      Sistema Legio Assessoria
+                      Sistema Leju Assessoria
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>
                   <div className="rounded-[1.4rem] bg-white/10 p-4 text-sm leading-7 text-white/75">
                     Atendimento em Vitoria e Grande Vitoria para casamentos,
-                    eventos especiais, decoracao e ambientacao.
+                    eventos especiais, decoracao e ambientacao. Contato:
+                    {" "}
+                    (27) 99937-5330.
                   </div>
                 </div>
               </div>

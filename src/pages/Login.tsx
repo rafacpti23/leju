@@ -103,7 +103,7 @@ const Login = () => {
                   className="h-20 w-20 rounded-[1.6rem] border border-white/80 object-cover shadow-lg"
                 />
                 <p className="mt-6 text-sm font-semibold uppercase tracking-[0.32em] text-primary">
-                  Sistema Legio Assessoria
+                  Sistema Leju Assessoria
                 </p>
                 <h1 className="mt-4 font-display text-5xl leading-[0.95] text-[#621c3d]">
                   Acesso exclusivo para clientes, parceiros e equipe.
@@ -151,7 +151,7 @@ const Login = () => {
                   Bem-vindo ao sistema
                 </CardTitle>
                 <CardDescription className="text-base text-slate-500">
-                  Use seu email e senha para acessar a area interna da Legio
+                  Use seu email e senha para acessar a area interna da Leju
                   Assessoria.
                 </CardDescription>
                 <p className="text-sm text-slate-400">Versao {APP_VERSION}</p>
